@@ -1,0 +1,29 @@
+#include "servo_sa_hw_adapter.h"
+
+using namespace gmt;
+
+void servoSaHwAdapter::step(bool setup_ok) {
+    if(setup_ok) {                     // this will be executed only if port setup has been received
+        if (is_step_rate(100)) {      // this will be executed every 1000 steps
+            log_info("step  = "                     + std::to_string(step_counter));
+            log_info("enable at hw_ad = "           + std::to_string(enable_check[0]));
+            log_info("Force read back X = "         + std::to_string(force_rb.X[0]));
+            log_info("Force read back Y = "         + std::to_string(force_rb.Y[0]));
+            log_info("Force read back Z = "         + std::to_string(force_rb.Z[0]));
+            log_info("Error at hw ad = "            + std::to_string(err_hw_ad.err_io[0]));
+            log_info("Close_loop at hw_ad "         + std::to_string(close_loop_hw_ad[0]));
+            log_info("Close_loop_status at hw_ad "  + std::to_string(close_loop_status[0]));
+            log_info("Pwm offset at hw_ad "         + std::to_string(pwm_offset_hw_ad[0]));
+            log_info("force_sp_x at hw_ad "         + std::to_string(force_sp_hw_ad.X[0]));
+            log_info("force_sp_y at hw_ad "         + std::to_string(force_sp_hw_ad.Y[0]));
+            log_info("force_sp_z at hw_ad "         + std::to_string(force_sp_hw_ad.Z[0]));
+            log_info("force_sp_x_status at hw_ad "  + std::to_string(force_sp_status.X[0]));
+            log_info("force_sp_y_status at hw_ad "  + std::to_string(force_sp_status.Y[0]));
+            log_info("force_sp_x_status at hw_ad "  + std::to_string(force_sp_status.Z[0]));
+            log_info("PWM Cylinder 1 at hw_ad "     + std::to_string(pwm_status.pwservo[0]));
+            log_info("PWM Cylinder 2 at hw_ad "     + std::to_string(pwm_status.pwm2[0]));
+            log_info("PWM Cylinder 3 at hw_ad "     + std::to_string(pwm_status.pwm3[0]));
+            log_info("Slave heartbeat at hw_ad "    + std::to_string(slvhb_hw_ad[0]));
+        }
+    }
+}
